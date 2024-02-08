@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TODOWebAPI.Domain.Entities;
+using TODOWebAPI.Domain.Interfaces;
+using TODOWebAPI.Repository;
 
 namespace TODOWebAPI.Controllers
 {
@@ -10,15 +12,18 @@ namespace TODOWebAPI.Controllers
     {
 
         private readonly ILogger<TODOController> _logger;
+        private readonly ITODORepository _repository;
 
-        public TODOController(ILogger<TODOController> logger)
+        public TODOController(ILogger<TODOController> logger, ITODORepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         [HttpPost]
         public async Task<TodoDto> Post([FromBody] TodoDto data)
         {
+            
             return data;
         }
 
